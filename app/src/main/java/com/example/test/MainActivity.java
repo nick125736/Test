@@ -46,7 +46,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goResult(View view) {
+
+        String name = ed_name.getText().toString();
+        double height =  Double.parseDouble(ed_height.getText().toString());
+        double weight =  Double.parseDouble(ed_weight.getText().toString());
         Intent intent = new Intent(this, ResultActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("keyname",name);
+        bundle.putDouble("keyheight",height);
+        bundle.putDouble("keyweight",weight);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
