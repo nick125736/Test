@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton girl;
     private RadioButton boy;
     private TextView demo;
+    private CheckBox apple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +30,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
         showSex();
+
     }
 
     private void showSex() {
+        String msg = "";
         if(boy.isChecked()) {
-            demo.setText("男生");
+            msg += boy.getText().toString();
         }
         if(girl.isChecked()) {
-            demo.setText(girl.getText());
+            msg += girl.getText().toString();
         }
+        if(apple.isChecked()) {
+            msg += apple.getText().toString();
+        }
+        demo.setText(msg);
     }
 
     public void showSex(View view) {
-        if(boy.isChecked()) {
-            demo.setText("男生");
-        }
-        if(girl.isChecked()) {
-            demo.setText(girl.getText());
-        }
+        showSex();
     }
 
     @SuppressLint("SetTextI18n")
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         girl = findViewById(R.id.rbFemale);
         boy = findViewById(R.id.rbMale);
         demo = findViewById(R.id.tvdemo);
+        apple = findViewById(R.id.cbApple);
     }
 
     public void goResult(View view) {

@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="showSex"
-            android:text="男"
+            android:text="@string/boy"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="showSex"
-            android:text="女"
+            android:text="@string/girl"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RadioGroup>
 
@@ -122,5 +122,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+    <CheckBox
+        android:id="@+id/cbApple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showSex"
+        android:text="蘋果"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnResult" />
+
+    <CheckBox
+        android:id="@+id/cbKiwi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cbApple"
+        app:layout_constraintTop_toBottomOf="@+id/btnResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
