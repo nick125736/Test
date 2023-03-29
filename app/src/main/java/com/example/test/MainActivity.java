@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,11 +18,34 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_submit;
     private EditText ed_height;
     private EditText ed_weight;
+    private RadioButton girl;
+    private RadioButton boy;
+    private TextView demo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+        showSex();
+    }
+
+    private void showSex() {
+        if(boy.isChecked()) {
+            demo.setText("男生");
+        }
+        if(girl.isChecked()) {
+            demo.setText(girl.getText());
+        }
+    }
+
+    public void showSex(View view) {
+        if(boy.isChecked()) {
+            demo.setText("男生");
+        }
+        if(girl.isChecked()) {
+            demo.setText(girl.getText());
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -34,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         double bmi = weight / ((height /100.0) * (height /100.0));
 
         tv_show.setText(name+ getString(R.string.welcome) + bmi);
-
     }
 
     private void findViews() {
@@ -43,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         btn_submit = findViewById(R.id.btnSummit);
         ed_height = findViewById(R.id.edHeight);
         ed_weight = findViewById(R.id.edWeight);
+        girl = findViewById(R.id.rbFemale);
+        boy = findViewById(R.id.rbMale);
+        demo = findViewById(R.id.tvdemo);
     }
 
     public void goResult(View view) {
