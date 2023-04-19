@@ -9,4 +9,6 @@
     <string name="goresult">Go Result</string>
     <string name="boy">Male</string>
     <string name="girl">Female</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="apple">蘋果</string>
 </resources>
