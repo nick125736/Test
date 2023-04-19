@@ -6,10 +6,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton boy;
     private TextView demo;
     private CheckBox apple;
+    private Spinner steaks;
+    private final String[] choose1 = {"蘋果","香蕉","橘子","西瓜","奇異果"};
+    private ListView fruit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +38,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
         showSex();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,choose1);
+        fruit.setAdapter(adapter);
+        steaks.setAdapter(adapter);
+//        steaks.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+////                tv_show.setText( String.valueOf(position));
+//
+////                  String[] steak_arr = getResources().getStringArray(R.array.streak);
+////                  tv_show.setText(steak_arr[position]);
+//                  tv_show.setText(steaks.getSelectedItem().toString());
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+        fruit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                tv_show.setText(choose1[position]);
+            }
+        });
 
+        fruit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tv_show.setText(fruit.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void showSex() {
@@ -73,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         boy = findViewById(R.id.rbMale);
         demo = findViewById(R.id.tvdemo);
         apple = findViewById(R.id.cbApple);
+        steaks = findViewById(R.id.spSteak);
+        fruit = findViewById(R.id.lvFruit);
     }
 
     public void goResult(View view) {
@@ -88,4 +133,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }

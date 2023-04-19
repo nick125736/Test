@@ -52,14 +52,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/hintname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintStart_toStartOf="@+id/tvShow"
-        app:layout_constraintTop_toBottomOf="@+id/tvShow"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/tvShow" />
 
     <EditText
         android:id="@+id/edHeight"
@@ -88,12 +88,13 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="131dp"
-        android:layout_height="60dp"
+        android:layout_width="188dp"
+        android:layout_height="75dp"
         android:layout_marginTop="32dp"
         android:checkedButton="@id/rbFemale"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edName">
 
@@ -141,5 +142,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cbApple"
         app:layout_constraintTop_toBottomOf="@+id/btnResult" />
+
+    <Spinner
+        android:id="@+id/spSteak"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:entries="@array/streak"
+        android:minHeight="48dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/btnSummit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ListView
+        android:id="@+id/lvFruit"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="108dp"
+        android:background="#FE86ACEE"
+        android:entries="@array/streak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
