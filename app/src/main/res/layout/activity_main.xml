@@ -38,7 +38,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:onClick="submit"
+        android:onClick="submit1"
         android:text="@string/btnsbmbit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,12 +69,10 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/sHeight"
-        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/edName"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
         android:id="@+id/edWeight"
@@ -83,23 +81,19 @@
         android:layout_marginStart="12dp"
         android:ems="10"
         android:hint="@string/sWeight"
-        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#455A64"
         app:layout_constraintStart_toStartOf="@+id/edName"
-        app:layout_constraintTop_toBottomOf="@+id/edHeight"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/edHeight" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="188dp"
-        android:layout_height="75dp"
+        android:layout_width="131dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:checkedButton="@id/rbFemale"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edName">
 
@@ -134,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showSex"
-        android:text="@string/apple"
+        android:text="蘋果"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnResult" />
@@ -143,7 +137,7 @@
         android:id="@+id/cbKiwi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkbox"
+        android:text="CheckBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cbApple"
         app:layout_constraintTop_toBottomOf="@+id/btnResult" />
@@ -159,18 +153,15 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSummit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/lvFruit"
         android:layout_width="250dp"
         android:layout_height="100dp"
-        android:layout_marginTop="108dp"
         android:background="#FE86ACEE"
         android:entries="@array/streak"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/radioGroup" />
 

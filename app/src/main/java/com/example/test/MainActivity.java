@@ -4,7 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox apple;
     private Spinner steaks;
     private final String[] choose1 = {"蘋果","香蕉","橘子","西瓜","奇異果"};
+    private boolean[] chooseFruit = new boolean[5];
+    private int checkedFruit = 0;
     private ListView fruit;
 
 
@@ -118,11 +121,18 @@ public class MainActivity extends AppCompatActivity {
 //                .show();
         new AlertDialog.Builder(this)
                 .setTitle("這是個訊息對話框")
-                .setMessage(String.valueOf(bmi))
+//                .setMessage(String.valueOf(bmi))
                 .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        String msg = "";
+                        for (int i = 0; i < chooseFruit.length; i++) {
+                            if(chooseFruit[i]) {
+                                msg += choose1[i] + " ";
+                            }
+                        }
+                        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_LONG).show();
+//                        checkedFruit = 0;
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -132,11 +142,35 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setIcon(R.mipmap.s1)
+//                .setSingleChoiceItems(choose1, checkedFruit, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        checkedFruit = which;
+//                    }
+//                })
+                .setMultiChoiceItems(choose1, chooseFruit, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
+                    }
+                })
                 .show();
 
 
 
+    }
+
+    public void submit1(View view) {
+        new DatePickerDialog(this)
+                .setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String msg = "";
+                        msg += String.valueOf(year) + "/" ;
+                        msg += String.valueOf(month) + "/" ;
+                        msg += String.valueOf(dayOfMonth);
+                    }
+                });
     }
 
     private void findViews() {
