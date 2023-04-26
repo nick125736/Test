@@ -1,10 +1,14 @@
 package com.example.test;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +19,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,7 +108,35 @@ public class MainActivity extends AppCompatActivity {
         double weight =  Double.parseDouble(ed_weight.getText().toString());
         double bmi = weight / ((height /100.0) * (height /100.0));
 
-        tv_show.setText(name+ getString(R.string.welcome) + bmi);
+//        tv_show.setText(name+ getString(R.string.welcome) + bmi);
+//        Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG)
+//             .show();
+//        Log.d("BMI=",String.valueOf(bmi));
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("測試對話")
+//                .setMessage("AAAAAAAA")
+//                .show();
+        new AlertDialog.Builder(this)
+                .setTitle("這是個訊息對話框")
+                .setMessage(String.valueOf(bmi))
+                .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(R.mipmap.s1)
+
+                .show();
+
+
+
     }
 
     private void findViews() {
