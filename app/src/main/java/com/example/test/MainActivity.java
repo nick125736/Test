@@ -1,10 +1,12 @@
 package com.example.test;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +22,10 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private EditText ed_name;
     private TextView tv_show;
@@ -38,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean[] chooseFruit = new boolean[5];
     private int checkedFruit = 0;
     private ListView fruit;
+    private DatePickerDialog datePickerDialog;
+    private TimePickerDialog timePickerDialog;
+    private final int SET_REQUEST = 1234;
 
 
     @Override
@@ -82,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void showSex() {
@@ -160,17 +167,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void submit1(View view) {
-        new DatePickerDialog(this)
-                .setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String msg = "";
-                        msg += String.valueOf(year) + "/" ;
-                        msg += String.valueOf(month) + "/" ;
-                        msg += String.valueOf(dayOfMonth);
-                    }
-                });
+        datePickerDialog = new DatePickerDialog(MainActivity.this);
+        datePickerDialog.show();
     }
 
     private void findViews() {
@@ -187,6 +187,18 @@ public class MainActivity extends AppCompatActivity {
         fruit = findViewById(R.id.lvFruit);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1234:
+                if(resultCode==1111) {
+                    tv_show.setText("從ResultActivity返回!!");
+                }
+
+        }
+    }
+
     public void goResult(View view) {
 
         String name = ed_name.getText().toString();
@@ -198,7 +210,20 @@ public class MainActivity extends AppCompatActivity {
         bundle.putDouble("keyheight",height);
         bundle.putDouble("keyweight",weight);
         intent.putExtras(bundle);
-        startActivity(intent);
+//        startActivity(intent);
+        setResult(1234,intent);
+        startActivityIfNeeded(intent,SET_REQUEST);
     }
 
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+    }
+
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+    }
 }

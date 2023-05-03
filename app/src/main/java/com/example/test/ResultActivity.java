@@ -42,11 +42,13 @@ public class ResultActivity extends AppCompatActivity {
 
         TextView showbmi = findViewById(R.id.tvShowBMI);
         showbmi.setText(name+", " + Mes);
+        setResult(1111,intent);
     }
 
     public void Gohome(View view) {
 //        Intent intent  = new Intent(this, MainActivity.class);
 //        startActivity(intent);
+
         finish();
     }
 }
