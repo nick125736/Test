@@ -1,9 +1,15 @@
-import java.util.ArrayList;
+import java.util.ArrayList ;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class BMIAdapter{
-    private ArrayList<BMIdata> bmidataList;
+public class BMIAdapter  {
+    private ArrayList<BMIdata> bmIdataList;
 
-    public BMIAdapter(ArrayList<BMIdata> bmidataList) {
-        this.bmidataList = bmidataList;
+    public BMIAdapter(ArrayList<BMIdata> bmIdataList) {
+        this.bmIdataList = bmIdataList;
     }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+    }
+
 }
