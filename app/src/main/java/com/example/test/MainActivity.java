@@ -204,15 +204,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String name = ed_name.getText().toString();
         double height =  Double.parseDouble(ed_height.getText().toString());
         double weight =  Double.parseDouble(ed_weight.getText().toString());
-        Intent intent = new Intent(this, ResultActivity.class);
+        double bmi = weight / ((height /100.0) * (height /100.0));
+
+        Intent intent = getIntent();
+//        Intent intent = new Intent(this, ResultActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("keyname",name);
         bundle.putDouble("keyheight",height);
         bundle.putDouble("keyweight",weight);
+        bundle.putDouble("keybmi",bmi);
         intent.putExtras(bundle);
 //        startActivity(intent);
-        setResult(1234,intent);
-        startActivityIfNeeded(intent,SET_REQUEST);
+        setResult(1111,intent);
+        finish();
     }
 
     @SuppressLint("SetTextI18n")
