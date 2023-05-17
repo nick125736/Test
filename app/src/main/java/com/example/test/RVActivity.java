@@ -2,9 +2,11 @@ package com.example.test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 
 public class RVActivity extends AppCompatActivity {
 
-    public class BMIdata {
+    public static class BMIdata {
         public String getName() {
             return name;
         }
@@ -56,21 +58,21 @@ public class RVActivity extends AppCompatActivity {
 
     public class BMIAdapter extends RecyclerView.Adapter<BMIAdapter.ViewHolder>{
 
-        private ArrayList<BMIdata> bmIdataList;
+        public ArrayList<BMIdata> bmIdataList;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            private final TextView name;
-            private final TextView height;
-            private final TextView weight;
-            private final TextView bmi;
+            private TextView name;
+            private TextView height;
+            private TextView weight;
+            private TextView bmi;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                name = findViewById(R.id.tvRowName);
-                height = findViewById(R.id.tvRowHeight);
-                weight = findViewById(R.id.tvRowWeight);
-                bmi = findViewById(R.id.tvRowBMI);
+                name =  itemView.findViewById(R.id.tvRowName);
+                height = itemView.findViewById(R.id.tvRowHeight);
+                weight = itemView.findViewById(R.id.tvRowWeight);
+                bmi = itemView.findViewById(R.id.tvRowBMI);
             }
         }
 
@@ -90,6 +92,7 @@ public class RVActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             BMIdata bmIdata = bmIdataList.get(position);
+            Log.d("BMIdata>>>",bmIdata.getName());
             holder.name.setText(bmIdata.getName());
             holder.height.setText(String.valueOf(bmIdata.getHeight()));
             holder.weight.setText(String.valueOf(bmIdata.getWeight()));
@@ -98,6 +101,8 @@ public class RVActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
+            Log.d("SIZE>>>>", String.valueOf(bmIdataList.size()));
+
             return bmIdataList.size();
         }
 
@@ -108,5 +113,28 @@ public class RVActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rvactivity);
+
+        ArrayList<BMIdata> bmIdataArrayList = new ArrayList<>();
+        BMIdata a = new BMIdata();
+        for (int i = 0; i < 10; i++) {
+            a.setName("cflin");
+            a.setHeight(180.2+i);
+            a.setWeight(80.5+i);
+            a.setBmi(20.05+i);
+            bmIdataArrayList.add(a);
+        }
+//        Log.d("SIZE>>>", String.valueOf(bmIdataArrayList.size()));
+        RecyclerView recyclerView = findViewById(R.id.rvBMI);
+        BMIAdapter adapter = new BMIAdapter(bmIdataArrayList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(RVActivity.this));
+        recyclerView.setAdapter(adapter);
+
+        BMIdata b = new BMIdata();
+        b.setName("AAAAAAA");
+        b.setHeight(100);
+        b.setWeight(50);
+        b.setBmi(20);
+        bmIdataArrayList.add(b);
+
     }
 }

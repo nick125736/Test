@@ -9,11 +9,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBMI"
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="500dp"
         android:layout_marginTop="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/recycler_view_item" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

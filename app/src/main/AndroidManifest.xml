@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="33">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/recycler_view_item_2.xml" />
+
         <activity
             android:name=".RVActivity"
             android:exported="true">
